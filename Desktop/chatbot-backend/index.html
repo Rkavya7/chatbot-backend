@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ChatCat</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div class="chat-container">
+
+    <div class="header">
+      <span>Chatcat 🤖</span>
+      <button onclick="toggleTheme()">🌙</button>
+    </div>
+
+    <div id="chat-box"></div>
+
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Type or speak..." />
+      
+      <!-- 🎤 Voice Button -->
+      <button onclick="startVoice()">🎤</button>
+
+      <button onclick="sendMessage()">Send</button>
+      <div class="input-area">
+
+  <button onclick="toggleEmojiPicker()">😊</button>
+
+</div>
+
+<!-- Emoji Picker -->
+<div id="emoji-picker" class="emoji-picker hidden"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
