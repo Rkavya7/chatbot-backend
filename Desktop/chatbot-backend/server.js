@@ -6,15 +6,22 @@ const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const app = express();
-const PORT = 5001;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
 
 // API KEY from .env
 const apiKey = process.env.API_KEY;
 
 console.log("API KEY:", apiKey);
+
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.send("Server is working 🚀");
+});
 
 // Gemini model
 const MODEL_NAME = "models/gemini-2.5-flash";
@@ -54,14 +61,13 @@ app.post("/chat", async (req, res) => {
       "No response from AI";
 
     res.json({ reply: botReply });
-
   } catch (error) {
     console.error("FULL ERROR:", error);
     res.status(500).json({ reply: "Server error" });
   }
 });
 
-// Start server
+// ✅ Start server (ONLY ONCE)
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
